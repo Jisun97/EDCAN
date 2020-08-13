@@ -1,23 +1,72 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <data>
+
+        <variable
+            name="user"
+            type="com.david0926.edcansummer.UserModel" />
 
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:padding="24dp">
 
         <TextView
+            android:id="@+id/txt_more_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="더보기"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="@{user.name, default=`Username`}"
+            android:textColor="@android:color/black"
+            android:textSize="28sp"
+            app:layout_constraintBottom_toTopOf="@+id/txt_more_info"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <TextView
+            android:id="@+id/txt_more_info"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center"
+            android:text="@{user.email+`\n`+user.time, default=`email@email.com\n2020/00/00 00:00 AM`}"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toTopOf="@+id/btn_more_delete"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_more_name" />
+
+        <Button
+            android:id="@+id/btn_more_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="delete account"
+            app:layout_constraintBottom_toTopOf="@+id/btn_more_pw"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_more_pw"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="reset password"
+            app:layout_constraintBottom_toTopOf="@+id/btn_more_logout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/btn_more_logout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="logout"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
